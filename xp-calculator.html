@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <title>XP Calculator</title>
+
+    <!-- The next few lines are for importing fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <!-- import CSS code -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
+</head>
+
+<body>
+    
+    <!-- Load the toolbar from local HTML file -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script> 
+    $(function(){
+    $("#toolbar").load("Resources/Toolbar.html"); 
+    });
+    </script>
+    <div id="toolbar"></div>
+
+
+    <div class="container">
+        <h1>XP Calculator</h1>
+        <div class="section">
+            <p>This is a long game designed to last over the course of years. The cost to level up will gradually steepen as you progress. The maximum possible level is 120.</p>
+            <br>
+            <p>Enter in your current level +1. This will tell you how much XP you need to reach the next level.</p>
+            
+            <form>
+                <label for="x">XP required for level... </label>
+                <input type="text" id="x" name="x"><br><br>
+                <input type="button" value="Solve" onclick="solveEquation()">
+            </form>
+            <p id="result"></p>
+        
+            <script>
+                function solveEquation() {
+                    var x = document.getElementById("x").value;
+                    var result = 5.06 * Math.pow((x - 1), 2);
+                    result = Math.ceil(result);
+                    document.getElementById("result").innerHTML = "You need " + result + " XP to reach level " + x;
+                }
+            </script>
+
+        </div>
+        
+        
+    <!-- End of Container-->
+    </div>
+
+</body>
+
+</html>
