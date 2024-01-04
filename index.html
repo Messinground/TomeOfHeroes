@@ -6,7 +6,7 @@
     <!-- The next few lines are for importing fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
 
     <style>
         /* Define the color variables for light and dark themes */
@@ -14,11 +14,11 @@
         :root {
             --bg-light: linear-gradient(to bottom, #D5E5F2, #fff);
             --text-color-light: #3E4001;
-            --link-color-light: #667302;
-            --link-hover-light: #4F5902;
+            --link-color-light: #BFB;
+            --link-hover-light: #D5e5F2;
             --bg-dark: linear-gradient(to bottom, #72808C, #221);
             --text-color-dark: white;
-            --link-color-dark: #D5E5F2;
+            --link-color-dark: #FFF;
             --link-hover-dark: black;
         }
 
@@ -37,6 +37,9 @@
             a:hover {
                 color: var(--link-hover-dark);
             }
+            .section {
+                color: #D5E5F2;
+            }
         }
 
         @media (prefers-color-scheme: light) {
@@ -51,6 +54,9 @@
             }
             a:hover {
                 color: var(--link-hover-light);
+            }
+            .section {
+                color: #000;
             }
         }
 
@@ -68,14 +74,16 @@
         }
 
         h1 {
-            font-family: 'Rubik Scribble', system-ui;
+            font-family: 'Rubik Doodle Shadow', system-ui;
             text-align: center;
             color: inherit;
+            text-shadow: 0 0 1px;
         }
 
         h2 {
             color: inherit;
-            font-family: 'Rubik Scribble', system-ui;
+            font-family: 'Rubik Doodle Shadow', system-ui;
+            text-shadow: 0 0 0.5px;
         }
 
         p {
@@ -102,7 +110,6 @@
             /* Add a box-shadow effect to the sections */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             background: rgba(79, 89, 2, 0.65);
-            color: #D5E5F2;
         }
 
         .social {
