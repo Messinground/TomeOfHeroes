@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <title>Getting Started</title>
+
+    <!-- The next few lines are for importing fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <!-- import CSS code -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
+</head>
+
+<body>
+    
+    <!-- Load the toolbar from local HTML file -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script> 
+    $(function(){
+    $("#toolbar").load("Resources/Toolbar.html"); 
+    });
+    </script>
+    <div id="toolbar"></div>
+
+
+    <div class="container">
+        <h1>Getting Started</h1>
+        <div class="section">
+            <h2>Instruction Booklet</h2>
+            <iframe  width=100%; height=100%; src="https://docs.google.com/document/d/e/2PACX-1vRmXJWbVSBX7ZaGWebWbL2qjyjP2nq1wvXKWfWOI01UhIQ0N3C_iuu_8RtAqePjYg2nz0Rrkuvks1jK/pub?embedded=true"></iframe>
+        </div>
+        
+        <div class="section">
+            <h2>Starter Packs</h2>
+            <p>Click below to download a .png containing all of the cards from the corresponding Decks. You can print these out yourself or upload them for use on TableTop Simulator.</p>
+
+            <!-- Deck Buttons -->
+                <!-- Add icon library for buttons -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                
+                <!-- CSS for Buttons -->
+                <style>
+                    .btn {
+                        background-color: DodgerBlue;
+                        border: none;
+                        color: white;
+                        padding: 12px 30px;
+                        cursor: pointer;
+                        font-size: 20px;
+                    }
+    
+                    /* Darker background on mouse-over */
+                    .btn:hover {
+                        background-color: RoyalBlue;
+                    }
+                    </style>
+
+                <!-- 2x2 grid with beginner & intermediate deck + thumbnails -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; align-items:center;">
+                    <a href="Resources/Decks/BeginnersDeck.png" download>
+                        <button style="grid-column: 1; grid-row: 1; max-height:75px; max-width:300px;" class="btn">
+                            <i class="fa fa-download"></i> Beginner's Deck
+                        </button>
+                    </a>
+                    <img src="Resources/Decks/BeginnersThumbnail.png" style="grid-column: 2; grid-row: 1; justify-self: center;" height="150px">
+                    <a href="Resources/Decks/IntermediateDeck.png" download>
+                        <button style="grid-column: 1; grid-row: 2; max-height:75px; max-width:300px;" class="btn">
+                            <i class="fa fa-download"></i> Intermediate Deck
+                        </button>
+                    </a> 
+                    <img src="Resources/Decks/IntermediateThumbnail.png" style="grid-column: 2; grid-row: 2; justify-self: center;" height="150px">
+                </div>
+            
+        </div>
+
+        
+    <!-- End of Container-->
+    </div>
+
+</body>
+
+</html>
