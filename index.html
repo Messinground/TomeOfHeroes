@@ -1,227 +1,266 @@
 <html>
+
 <head>
-  <title>Tome of Heroes</title>
-  
-  <!-- The next few lines are for importing fonts-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap" rel="stylesheet">
-  
-  <style>
-    /* Define the color variables for light and dark themes */
-    :root {
-      --bg-light: white;
-      --text-color-light: #555;
-      --link-color-light: #639A67;
-      --link-hover-light: #205D67;
-      --bg-dark: #001222;
-      --text-color-dark: #8cabd9;
-      --link-color-dark: #B793E6;
-      --link-hover-dark: #3532A7;
-    }
+    <title>Tome of Heroes</title>
 
-    /* Use the prefers-color-scheme media query to detect the user's system preference */
-    @media (prefers-color-scheme: light) {
-      /* Use the light theme colors by default */
-      body {
-        background: var(--bg-light);
-        color: var(--text-color-light);
-      }
-      a, a:link {
-        color: var(--link-color-light);
-      }
-      a:hover {
-        color: var(--link-hover-light);
-      }
-    }
+    <!-- The next few lines are for importing fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap" rel="stylesheet">
 
-    @media (prefers-color-scheme: dark) {
-      /* Use the dark theme colors if the user prefers dark mode */
-      body {
-        background: var(--bg-dark);
-        color: var(--text-color-dark);
-      }
-      a, a:link {
-        color: var(--link-color-dark);
-      }
-      a:hover {
-        color: var(--link-hover-dark);
-      }
-    }
+    <style>
+        /* Define the color variables for light and dark themes */
 
-    /* Add some style to the page */
-    h1 {
-      font-family: 'Rubik Scribble', system-ui;
-      text-align: center;
-      color: inherit;
-    }
-    h2 {
-      color: inherit;
-      font-family: 'Rubik Scribble', system-ui;
-    }
-    p {
-      margin: 10px;
-    }
-    a {
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .section {
-      border: 1px solid #cccccc;
-      padding: 20px;
-      margin: 20px;
-      /* Add a box-shadow effect to the sections */
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .social {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .social img {
-      width: 32px;
-      height: 32px;
-      margin: 5px;
-      /* Add a glow effect to the social icons */
-      filter: drop-shadow(0 0 5px #ffffff);
-    }
-    .toolbar {
-      background-color: #333;
-      overflow: hidden;
-    }
+        :root {
+            --bg-light: linear-gradient(to bottom, #D5E5F2, #fff);
+            --text-color-light: #3E4001;
+            --link-color-light: #667302;
+            --link-hover-light: #4F5902;
+            --bg-dark: linear-gradient(to bottom, #72808C, #221);
+            --text-color-dark: white;
+            --link-color-dark: #D5E5F2;
+            --link-hover-dark: black;
+        }
 
-    .toolbar a {
-      float: left;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 17px;
-    }
-    
-    .toolbar a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-    
-    .dropdown {
-      float: left;
-      overflow: hidden;
-    }
-    
-    .dropdown .dropbtn {
-      font-size: 17px;
-      border: none;
-      outline: none;
-      color: white;
-      padding: 14px 16px;
-      background-color: inherit;
-      font-family: inherit;
-      margin: 0;
-    }
-    
-    .dropdown:hover .dropbtn {
-      background-color: #ddd;
-      color: black;
-    }
-    
-    .toolbar > .dropdown > .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
+        /* Use the prefers-color-scheme media query to detect the user's system preference */
 
-    .dropdown-content a {
-      float: none;
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      text-align: left;
-    }
-    
-    .dropdown-content a:hover {
-      background-color: #ddd;
-    }
-    
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-  </style>
+        @media (prefers-color-scheme: dark) {
+            /* Use the dark theme colors if the user prefers dark mode */
+            body {
+                background: var(--bg-dark);
+                color: var(--text-color-dark);
+            }
+            a,
+            a:link {
+                color: var(--link-color-dark);
+            }
+            a:hover {
+                color: var(--link-hover-dark);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            /* Use the light theme colors by default */
+            body {
+                background: var(--bg-light);
+                color: var(--text-color-light);
+            }
+            a,
+            a:link {
+                color: var(--link-color-light);
+            }
+            a:hover {
+                color: var(--link-hover-light);
+            }
+        }
+
+        /* Add some style to the page */
+
+        body,
+        ul {
+            margin: 0;
+            /* Removes a leftmost gap from the toolbar */
+        }
+
+        body {
+            margin-top: 75px;
+            /* This way the title doesn't overlap with the toolbar*/
+        }
+
+        h1 {
+            font-family: 'Rubik Scribble', system-ui;
+            text-align: center;
+            color: inherit;
+        }
+
+        h2 {
+            color: inherit;
+            font-family: 'Rubik Scribble', system-ui;
+        }
+
+        p {
+            margin: 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            border: 1px solid #3E4001;
+            padding: 20px;
+            margin: 20px;
+            /* Add a box-shadow effect to the sections */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background: rgba(79, 89, 2, 0.65);
+            color: #D5E5F2;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social img {
+            width: 32px;
+            height: 32px;
+            margin: 5px;
+            /* Add a glow effect to the social icons */
+            filter: drop-shadow(0 0 5px #ffffff);
+        }
+
+        .toolbar {
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .toolbar a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .toolbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 17px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .toolbar>.dropdown>.dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
 </head>
-    <body>
-        <div class="toolbar"> 
-          <a href="index.html">Home</a>
-          <div class="dropdown">
+
+<body>
+    <div class="toolbar">
+        <a href="index.html">Home</a>
+        <div class="dropdown">
             <button class="dropbtn" style="cursor: pointer;" onclick="window.location.href='getting-started.html'">Getting started</button>
             <div class="dropdown-content">
-              <a href="how-to-play.html">How to play</a>
-              <a href="starter-kit.html">Starter Kit</a>
+                <a href="how-to-play.html">How to play</a>
+                <a href="starter-kit.html">Starter Kit</a>
             </div>
-          </div>
-          <div class="dropdown">
-            <button  class="dropbtn" style="cursor: pointer;" onclick="window.location.href='tools.html'">Tools</button>
-            <div class="dropdown-content">
-              <a href="dice-roller.html">Dice Roller</a>
-              <a href="card-unlocker.html">Card Unlocker</a>
-            </div>
-          </div>
         </div>
+        <div class="dropdown">
+            <button class="dropbtn" style="cursor: pointer;" onclick="window.location.href='tools.html'">Tools</button>
+            <div class="dropdown-content">
+                <a href="dice-roller.html">Dice Roller</a>
+                <a href="card-unlocker.html">Card Unlocker</a>
+            </div>
+        </div>
+    </div>
 
-    
-  <div class="container">
-    <h1>Tome of Heroes</h1>
-    <p>Welcome to the official website of Tome of Heroes, a card game of epic fantasy and adventure. Here you can find everything you need to know about the game, how to play it, and where to get it.</p>
-    <div class="section">
-      <h2>What is Tome of Heroes?</h2>
-      <p>Tome of Heroes is a card game that combines elements of role-playing, storytelling, and strategy. Each player takes on the role of a hero, chosen from a variety of classes and races, and embarks on a quest to explore a mysterious world, fight enemies, and collect treasures. The game is played with a deck of cards, each representing an action, an item, a skill, or an event. The cards are drawn from a common tome, which contains the story and the rules of the game. The tome is divided into chapters, each with a different theme and difficulty level. The players can choose which chapter to play, or create their own using the blank cards provided.</p>
-      <p>The game can be played solo or with up to four players. The game is designed to be easy to learn, but challenging to master. The game is also highly customizable, allowing the players to create their own heroes, cards, and stories. The game is suitable for ages 12 and up, and can be played in 30 to 60 minutes per session.</p>
+
+    <div class="container">
+        <h1>Tome of Heroes</h1>
+        <p>Welcome to the official website of Tome of Heroes, a card game of epic fantasy and adventure. Here you can find everything you need to know about the game, how to play it, and where to get it.</p>
+        <div class="section">
+            <h2>What is Tome of Heroes?</h2>
+            <p>Tome of Heroes is a card game that combines elements of role-playing, storytelling, and strategy. Each player takes on the role of a hero, chosen from a variety of classes and races, and embarks on a quest to explore a mysterious world, fight
+                enemies, and collect treasures. The game is played with a deck of cards, each representing an action, an item, a skill, or an event. The cards are drawn from a common tome, which contains the story and the rules of the game. The tome is
+                divided into chapters, each with a different theme and difficulty level. The players can choose which chapter to play, or create their own using the blank cards provided.</p>
+            <p>The game can be played solo or with up to four players. The game is designed to be easy to learn, but challenging to master. The game is also highly customizable, allowing the players to create their own heroes, cards, and stories. The game
+                is suitable for ages 12 and up, and can be played in 30 to 60 minutes per session.</p>
+        </div>
+        <div class="section">
+            <h2>How to play Tome of Heroes?</h2>
+            <p>The best way to learn how to play Tome of Heroes is to read the official rules document, which you can find below. The document explains the basic concepts, the components, the setup, the gameplay, and the scoring. The document also includes
+                some examples, tips, and variants to enhance your gaming experience.</p>
+            <p><a href="https://docs.google.com/document/d/1Sw4cutGgl0HbyaQj6t_9nArgIoaf26Pzk4IBzH-tchw/edit?usp=sharing" target="_blank">Click here to view the rules document</a></p>
+        </div>
+        <div class="section">
+            <h2>Where to play Tome of Heroes?</h2>
+            <p>If you want to play Tome of Heroes online, you can use the platform below, which allows you to create and join games with other players around the world. You can also chat, share feedback, and make friends with other fans of the game.</p>
+            <p><a href="https://tabletopia.com/games/tome-of-heroes" target="_blank">Click here to play Tome of Heroes on Tabletopia</a></p>
+        </div>
+        <div class="section">
+            <h2>Where to get Tome of Heroes?</h2>
+            <p>If you want to get a physical copy of Tome of Heroes, you can support the game on Patreon, where you can get access to exclusive rewards, such as early access, digital downloads, print-and-play files, and more. You can also order a printed
+                copy of the game from the link below, which will be shipped to your address.</p>
+            <p><a href="https://www.patreon.com/tomeofheroes" target="_blank">Click here to support Tome of Heroes on Patreon</a></p>
+            <p><a href="https://www.thegamecrafter.com/games/tome-of-heroes" target="_blank">Click here to order Tome of Heroes from The Game Crafter</a></p>
+        </div>
+        <div class="section">
+            <h2>More about Tome of Heroes</h2>
+            <p>If you want to learn more about Tome of Heroes, you can visit the following subpages on this site, where you can find more information and features related to the game.</p>
+            <ul>
+                <li><a href="dice.html">Dice Roller</a>: A simple tool to roll dice for the game, or for any other purpose.</li>
+                <li><a href="card.html">Card Unlocker</a>: A fun feature to unlock a random digital trading card, which you can order or print yourself.</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Follow Tome of Heroes</h2>
+            <p>If you want to stay updated on the latest news and updates about Tome of Heroes, you can follow the game on social media, where you can also interact with the creators and the community.</p>
+            <div class="social">
+                <a href="https://www.facebook.com/tomeofheroes" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/tomeofheroes" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+                <a href="https://discord.gg/tomeofheroes" target="_blank"><img src="discord.png" alt="Discord"></a>
+                <a href="https://www.patreon.com/tomeofheroes" target="_blank"><img src="patreon.png" alt="Patreon"></a>
+                <a href="https://twitter.com/tomeofheroes" target="_blank"><img src="twitter.png" alt="Twitter"></a>
+                <a href="https://www.youtube.com/channel/UCwEYVg7uSNnHk8-93-IdL4G" target="_blank"><img src="youtube.png" alt="YouTube"></a>
+            </div>
+        </div>
     </div>
-    <div class="section">
-      <h2>How to play Tome of Heroes?</h2>
-      <p>The best way to learn how to play Tome of Heroes is to read the official rules document, which you can find below. The document explains the basic concepts, the components, the setup, the gameplay, and the scoring. The document also includes some examples, tips, and variants to enhance your gaming experience.</p>
-      <p><a href="https://docs.google.com/document/d/1Sw4cutGgl0HbyaQj6t_9nArgIoaf26Pzk4IBzH-tchw/edit?usp=sharing" target="_blank">Click here to view the rules document</a></p>
-    </div>
-    <div class="section">
-      <h2>Where to play Tome of Heroes?</h2>
-      <p>If you want to play Tome of Heroes online, you can use the platform below, which allows you to create and join games with other players around the world. You can also chat, share feedback, and make friends with other fans of the game.</p>
-      <p><a href="https://tabletopia.com/games/tome-of-heroes" target="_blank">Click here to play Tome of Heroes on Tabletopia</a></p>
-    </div>
-    <div class="section">
-      <h2>Where to get Tome of Heroes?</h2>
-      <p>If you want to get a physical copy of Tome of Heroes, you can support the game on Patreon, where you can get access to exclusive rewards, such as early access, digital downloads, print-and-play files, and more. You can also order a printed copy of the game from the link below, which will be shipped to your address.</p>
-      <p><a href="https://www.patreon.com/tomeofheroes" target="_blank">Click here to support Tome of Heroes on Patreon</a></p>
-      <p><a href="https://www.thegamecrafter.com/games/tome-of-heroes" target="_blank">Click here to order Tome of Heroes from The Game Crafter</a></p>
-    </div>
-    <div class="section">
-      <h2>More about Tome of Heroes</h2>
-      <p>If you want to learn more about Tome of Heroes, you can visit the following subpages on this site, where you can find more information and features related to the game.</p>
-      <ul>
-        <li><a href="dice.html">Dice Roller</a>: A simple tool to roll dice for the game, or for any other purpose.</li>
-        <li><a href="card.html">Card Unlocker</a>: A fun feature to unlock a random digital trading card, which you can order or print yourself.</li>
-      </ul>
-    </div>
-    <div class="section">
-      <h2>Follow Tome of Heroes</h2>
-      <p>If you want to stay updated on the latest news and updates about Tome of Heroes, you can follow the game on social media, where you can also interact with the creators and the community.</p>
-      <div class="social">
-        <a href="https://www.facebook.com/tomeofheroes" target="_blank"><img src="facebook.png" alt="Facebook"></a>
-        <a href="https://www.instagram.com/tomeofheroes" target="_blank"><img src="instagram.png" alt="Instagram"></a>
-        <a href="https://discord.gg/tomeofheroes" target="_blank"><img src="discord.png" alt="Discord"></a>
-        <a href="https://www.patreon.com/tomeofheroes" target="_blank"><img src="patreon.png" alt="Patreon"></a>
-        <a href="https://twitter.com/tomeofheroes" target="_blank"><img src="twitter.png" alt="Twitter"></a>
-        <a href="https://www.youtube.com/channel/UCwEYVg7uSNnHk8-93-IdL4G" target="_blank"><img src="youtube.png" alt="YouTube"></a>
-      </div>
-    </div>
-  </div>
+
 </body>
+
 </html>
