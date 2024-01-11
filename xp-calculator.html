@@ -36,14 +36,14 @@
                 <input type="text" id="x" name="x"><br><br>
                 <input type="button" value="Calculate" onclick="solveEquation()">
             </form>
-            <p id="result"></p>
+            <p id="Lresult"></p>
         
             <script>
                 function solveEquation() {
                     var x = document.getElementById("x").value;
-                    var result = 5.06 * Math.pow((x - 1), 2);
-                    result = Math.ceil(result);
-                    document.getElementById("result").innerHTML = "You need " + result + " XP to reach level " + x;
+                    var Lresult = 5.06 * Math.pow((x - 1), 2);
+                    Lresult = Math.ceil(Lresult);
+                    document.getElementById("Lresult").innerHTML = "You need " + Lresult + " XP to reach level " + x;
                 }
             </script>
 
@@ -78,8 +78,8 @@
                     // Get the number from the table using the indices
                     var number = table[rowIndex][colIndex];
 
-                    // Display the number in a paragraph element with id="result"
-                    document.getElementById("result").innerHTML = "The number is: " + number;
+                    // Display the number in a paragraph element with id="Tresult"
+                    document.getElementById("Tresult").innerHTML = "The number is: " + number;
                 }
             </script>
                 <p>Select a difficulty level and a time duration from the dropdowns below and click the Calculate button to see
@@ -103,7 +103,7 @@
                     </select>
                     <button type="button" onclick="calculate()">Calculate</button>
                 </form>
-                <p id="result"></p>
+                <p id="Tresult"></p>
         </div>
         
     <!-- End of Container-->
