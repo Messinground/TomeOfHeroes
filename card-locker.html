@@ -118,8 +118,6 @@
             
             <script>
                 function getRandomImage() {
-                    // Disable the button
-                    $("#randomCardButton").prop("disabled", true);
                     // Open a new tab immediately
                     var newTab = window.open();
                     // Use the $.getJSON method to get the data from the JSON file
@@ -189,7 +187,10 @@
                             // Set the inner text of the button
                             RandCardbutton.innerText = "See what you found...";
                             // Set the onclick attribute of the button
-                            RandCardbutton.onclick = getRandomImage;
+                            RandCardbutton.onclick = function() {
+                                getRandomImage();
+                                this.disabled = true;
+                            }
                             // Set the text output to "Success"
                             SuccessFailiure.textContent = "You found a card! ";
                             SuccessFailiure.appendChild(RandCardbutton)
@@ -201,13 +202,9 @@
                 }
   
             </script>
-             
-             
-
 
         </div>
-
-
+ 
     </div>
 
 </body>
