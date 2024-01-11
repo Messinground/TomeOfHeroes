@@ -69,7 +69,7 @@
             <!-- ----------- -->
             <!-- SLIDER CODE -->
             <!-- ----------- -->
-            <div class="slidecontainer" style="background:#333;width:fit-content;padding:20px;border-radius:20px;">
+            <div class="slidecontainer" style="background:rgb(112, 128, 114);width:fit-content;padding:20px;border-radius:20px;">
                 <!-- Slider -->
                 <input type="range" id="slider" min="-10" max="10" value="0">
                 <!-- Output -->
