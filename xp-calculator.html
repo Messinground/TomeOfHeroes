@@ -34,7 +34,7 @@
             <form>
                 <label for="x">XP required for level... </label>
                 <input type="text" id="x" name="x"><br><br>
-                <input type="button" value="Solve" onclick="solveEquation()">
+                <input type="button" value="Calculate" onclick="solveEquation()">
             </form>
             <p id="result"></p>
         
@@ -48,7 +48,63 @@
             </script>
 
         </div>
-        
+
+        <div class="section">
+            <h2>Task Complexity Calculator</h1>
+            <script>
+                // This function will get the selected values from the dropdowns and find the matching number from the table
+                function calculate() {
+                    // Get the difficulty level and time duration from the dropdowns
+                    var difficulty = document.getElementById("difficulty").value;
+                    var time = document.getElementById("time").value;
+
+                    // Define the table as a two-dimensional array
+                    var table = [
+                        [3, 5, 10, 15, 20],
+                        [5, 10, 15, 20, 25],
+                        [10, 15, 20, 25, 35],
+                        [15, 20, 25, 35, 50],
+                        [20, 25, 35, 50, 100]
+                    ];
+
+                    // Define the difficulty levels and time durations as arrays
+                    var difficultyLevels = ["Very easy", "Easy", "Medium", "Hard", "Very Hard"];
+                    var timeDurations = ["1hr or less", "Multiple hours", "Multiple Days", "Weeks", "3+ months"];
+
+                    // Find the row and column indices of the selected values in the arrays
+                    var rowIndex = difficultyLevels.indexOf(difficulty);
+                    var colIndex = timeDurations.indexOf(time);
+
+                    // Get the number from the table using the indices
+                    var number = table[rowIndex][colIndex];
+
+                    // Display the number in a paragraph element with id="result"
+                    document.getElementById("result").innerHTML = "The number is: " + number;
+                }
+            </script>
+                <p>Select a difficulty level and a time duration from the dropdowns below and click the Calculate button to see
+                    the corresponding number from the table.</p>
+                <form>
+                    <label for="difficulty">Difficulty Level:</label>
+                    <select id="difficulty" name="difficulty">
+                        <option value="Very easy">Very easy</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                        <option value="Very Hard">Very Hard</option>
+                    </select>
+                    <label for="time">Time Duration:</label>
+                    <select id="time" name="time">
+                        <option value="1hr or less">1hr or less</option>
+                        <option value="Multiple hours">Multiple hours</option>
+                        <option value="Multiple Days">Multiple Days</option>
+                        <option value="Weeks">Weeks</option>
+                        <option value="3+ months">3+ months</option>
+                    </select>
+                    <button type="button" onclick="calculate()">Calculate</button>
+                </form>
+                <p id="result"></p>
+        </div>
         
     <!-- End of Container-->
     </div>
