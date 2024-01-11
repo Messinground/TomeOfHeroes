@@ -79,11 +79,11 @@
                     var number = table[rowIndex][colIndex];
 
                     // Display the number in a paragraph element with id="Tresult"
-                    document.getElementById("Tresult").innerHTML = "The number is: " + number;
+                    document.getElementById("Tresult").innerHTML = "Your task was worth: " + number + "Experience points!";
                 }
             </script>
-                <p>Select a difficulty level and a time duration from the dropdowns below and click the Calculate button to see
-                    the corresponding number from the table.</p>
+                <p>Use the dropdowns to describe the difficulty and time-investment of a task. Then click "Calculate" to see how many experience points that task is worth.</p>
+                <br>
                 <form>
                     <label for="difficulty">Difficulty Level:</label>
                     <select id="difficulty" name="difficulty">
