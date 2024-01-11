@@ -48,7 +48,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
 
             <!--For Testing Purposes -->
-            <p>Version 3. Current date is:</p>
+            <p>Version 3.1. Current date is:</p>
             <p id="testing"></p>
             <br>
             <p style="font-size: 25;">Today's Threshold is:</p>
@@ -81,7 +81,12 @@
                 testingx.textContent = date
             </script>
 
+        </div>
+
+        <div class="section">
+
             <h2>Momentum:</h2>
+
             <!-- ----------- -->
             <!-- SLIDER CODE -->
             <!-- ----------- -->
@@ -104,8 +109,37 @@
                 }
             </script>
 
+
             <!-- ----------- -->
-            <!-- Generator -->
+            <!-- Random Link -->
+            <!-- ----------- -->
+            
+            <script>
+                function getRandomImage() {
+                    // Disable the button
+                    $("#randomCardButton").prop("disabled", true);
+                    // Open a new tab immediately
+                    var newTab = window.open();
+                    // Use the $.getJSON method to get the data from the JSON file
+                    $.getJSON("Resources/CardList.json", function(data) {
+                        // Get the length of the images array
+                        var length = data.length;
+                        // Generate a random number between 0 and length - 1
+                        var randomNumber = Math.floor(Math.random() * length);
+                        // Get the random image from the array
+                        var randomImage = data[randomNumber];
+                        // Create the image url
+                        var imageUrl = "Cards/" + randomImage;
+                        // Print the image url to the console
+                        console.log(imageUrl);
+                        // Change the URL of the new tab
+                        newTab.location = imageUrl;
+                    });
+                }
+            </script>
+
+            <!-- ----------- -->
+            <!-- Dice Roller -->
             <!-- ----------- -->
             <h3 id="numberGen"></h3>
             <p id="SuccessFailiure"></p>
@@ -147,44 +181,25 @@
                         numberGen.textContent = finalResult
                         // Compare the final number to the scaledNumber
                         if (finalResult >= globalScaledNumber) {
+                            // Create a button element
+                            var RandCardbutton = document.createElement("button");
+                            // Set the inner text of the button
+                            RandCardbutton.innerText = "See what you found...";
+                            // Set the onclick attribute of the button
+                            RandCardbutton.onclick = getRandomImage;
                             // Set the text output to "Success"
-                            SuccessFailiure.textContent = "Success!";
+                            SuccessFailiure.textContent = "You found a card! ";
+                            SuccessFailiure.appendChild(RandCardbutton)
                         } else {
                             // Set the text output to "Failure"
-                            SuccessFailiure.textContent = "Failure...";
+                            SuccessFailiure.textContent = "Try again tomorrow!";
                         }
                     }, 2000);
                 }
-
+  
             </script>
-
-            <!-- ----------- -->
-            <!-- Random Link -->
-            <!-- ----------- -->
-            
-            <script>
-                function getRandomImage() {
-                    // Open a new tab immediately
-                    var newTab = window.open();
-                    // Use the $.getJSON method to get the data from the JSON file
-                    $.getJSON("Resources/CardList.json", function(data) {
-                        // Get the length of the images array
-                        var length = data.length;
-                        // Generate a random number between 0 and length - 1
-                        var randomNumber = Math.floor(Math.random() * length);
-                        // Get the random image from the array
-                        var randomImage = data[randomNumber];
-                        // Create the image url
-                        var imageUrl = "Cards/" + randomImage;
-                        // Print the image url to the console
-                        console.log(imageUrl);
-                        // Change the URL of the new tab
-                        newTab.location = imageUrl;
-                    });
-                }
-            </script>
-            
-            <button onclick="getRandomImage()">Get a random card</button>
+             
+             
 
 
         </div>
