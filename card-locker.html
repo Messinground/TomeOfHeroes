@@ -28,15 +28,17 @@
 
     <div class="container">
         <h1>Card Locker</h1>
-        <p>This is where your progress pays up!</p>
-        <p>Each day that you complete all the tasks you set for yourself, you gain +1 Momentum. If you leave 3 or more
-            left incomplete, you lose -1 Momentum.</p>
-        <p>Start with 0 and adjust the slider below according to your progress. You can have anywhere between -10 and
-            +10 momentum at a time. Momentum affects your odds of unlocking a card each day!</p>
-        <p>Once you've set your Momentum, Roll the dice and see whether or not you've surpassed the required threshold.
-            This number will change each day - so it's important to check in often to see what your odds are looking
-            like.</p>
-
+        <div style="padding-left: 20px;padding-right: 20px;">
+            <p>This is where your progress pays up!</p>
+            <p>Each day that you complete all the tasks that were due, you gain +1 Momentum. If you leave 3 or more
+                incomplete, you instead lose 1 Momentum. </p>
+            <p>Momentum affects your odds of unlocking a card each day. Start with 0 and adjust the slider below according to your progress. You can have anywhere between -10 and
+                +10 momentum at a time. This way if you have to take an extended break for any reason - you still have a chance of earning a card.</p>
+            <p>Once you've set your Momentum on the slider, Roll the dice and see whether you can surpass the threshold to discover something new!
+                This number will change each day - so it's important to check in often to see what your odds are looking like.</p>
+            <p>As you get new cards, save your collection to a folder somewhere you won't lose it and print them off as needed. But remember - you only have as many copies of a
+                card as you've unlocked! If you've only unlocked a card once, you'll only be allowed to use one copy of it in your deck.</p>
+        </div>
 
 
         <div class="section">
@@ -48,7 +50,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
 
             <!--For Testing Purposes -->
-            <p>Version 3.1. Current date is:</p>
+            <p>Version 3.2. Current date is:</p>
             <p id="testing"></p>
             <br>
             <p style="font-size: 25;">Today's Threshold is:</p>
@@ -141,9 +143,10 @@
             <!-- ----------- -->
             <!-- Dice Roller -->
             <!-- ----------- -->
-            <h3 id="numberGen"></h3>
-            <p id="SuccessFailiure"></p>
+            <br>
             <button id="buttonGen" onclick="generateNumber()">Roll</button>
+            <h3 id="numberGen" style="padding-left:20px;"></h3>
+            <p id="SuccessFailiure"></p>
 
             <script>
                 // JavaScript
