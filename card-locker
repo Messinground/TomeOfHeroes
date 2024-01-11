@@ -1,0 +1,151 @@
+<html>
+
+<head>
+    <title>Card Locker</title>
+
+    <!-- The next few lines are for importing fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <!-- import CSS code -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+
+</head>
+
+<body>
+
+    <!-- Load the toolbar from local HTML file -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#toolbar").load("Resources/Toolbar.html");
+        });
+    </script>
+    <div id="toolbar"></div>
+
+
+
+    <div class="container">
+        <h1>Card Locker</h1>
+        <p>Welcome to the official website of Tome of Heroes, a card game of epic fantasy and adventure. Here you can
+            find everything you need to know about the game, how to play it, and where to get it.</p>
+
+
+
+        <div class="section">
+            <!-- ----------- -->
+            <!-- THRESHHOLD -->
+            <!-- ----------- -->
+
+            <!-- Import the js-sha256 library from a CDN -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+
+            <p style="font-size: 25;">Today's Threshold is:</p>
+            <!-- Create a paragraph to display the output number -->
+            <h2 id="output-number" style="font-size:50px; text-align:center;"></h2>
+            <!-- Write some JavaScript code to get the current date and the hash calculation -->
+            <script>
+                // Declare a global variable
+                var globalScaledNumber;
+                // Get the current date using the new Date() constructor
+                const today = new Date();
+                // Convert the date into a string in the format of yyyy-mm-dd
+                const date = today.toISOString().slice(0, 10);
+                // Calculate the SHA-256 hash of the date
+                const hash = sha256(date);
+                // Convert the last two hexadecimal digits of the hash to a decimal number
+                const number = parseInt(hash.slice(-2), 16);
+                // Scale the number to the range of 1 to 20
+                const scaledNumber = (number % 20) + 1;
+                // Get the output paragraph element by its id
+                const output = document.getElementById("output-number");
+                // Display the output number in the paragraph
+                output.textContent = scaledNumber;
+                // Assign the value of scaledNumber to the global variable
+                globalScaledNumber = scaledNumber;
+            </script>
+
+            <!-- ----------- -->
+            <!-- SLIDER CODE -->
+            <!-- ----------- -->
+            <div class="slidecontainer" style="background:#333;width:fit-content;padding:20px;border-radius:20px;">
+                <!-- Slider -->
+                <input type="range" id="slider" min="-10" max="10" value="0">
+                <!-- Output -->
+                <output id="sliderValue" for="slider">0</output>
+            </div>
+
+            <script>
+                // JavaScript
+                // Get the slider and output elements
+                var slider = document.getElementById("slider");
+                var SLoutput = document.getElementById("sliderValue");
+                // Update the output value when the slider changes
+                slider.oninput = function () {
+                    SLoutput.value = this.value;
+                }
+            </script>
+
+            <!-- ----------- -->
+            <!-- Generator -->
+            <!-- ----------- -->
+            <h3 id="numberGen"></h3>
+            <p id="SuccessFailiure"></p>
+            <button id="buttonGen" onclick="generateNumber()">Start</button>
+
+            <script>
+                // JavaScript
+                // Get the number and button elements
+                var numberGen = document.getElementById("numberGen");
+                var buttonGen = document.getElementById("buttonGen");
+                var SuccessFailiure = document.getElementById("SuccessFailiure");
+
+                // Define a variable to store the interval ID
+                var interval;
+
+                // Define a function to generate a random number between 1 and 20
+                function randomInt() {
+                    return Math.floor(Math.random() * 20) + 1;
+                }
+
+                // Define a function to generate and display the random numbers
+                function generateNumber() {
+                    // Change the button text to "Stop"
+                    buttonGen.textContent = "Stop";
+                    // Set the interval to change the number every 50ms
+                    interval = setInterval(function () {
+                        // Generate and display a random number
+                        numberGen.textContent = randomInt();
+                    }, 50);
+                    // Set a timeout to stop the interval after 2 seconds
+                    setTimeout(function () {
+                        // Clear the interval
+                        clearInterval(interval);
+                        // Change the button text to "Start"
+                        buttonGen.textContent = "Start";
+                        // Define the final result as the sum of a random number and the slider value
+                        var finalResult = randomInt() + parseInt(slider.value); 
+                        // Display it in the output
+                        numberGen.textContent = finalResult
+                        // Compare the final number to the scaledNumber
+                        if (finalResult >= globalScaledNumber) {
+                            // Set the text output to "Success"
+                            SuccessFailiure.textContent = "Success!";
+                        } else {
+                            // Set the text output to "Failure"
+                            SuccessFailiure.textContent = "Failure...";
+                        }
+                    }, 2000);
+                }
+            </script>
+
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
