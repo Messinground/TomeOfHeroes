@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    
+
     <!-- Load the toolbar from local HTML file -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script> 
@@ -25,13 +25,13 @@
 
 
     <div class="container">
+        <h1>XP Calculators</h1>
         <div class="section">
-            <h2>XP Calculator</h2>
-            <p>This is a long game designed to last over the course of years. The cost to level up will gradually steepen as you progress. The maximum possible level is 120.</p>
-            <br>
-            <p>Enter in your current level +1. This will tell you how much XP you need to reach the next level.</p>
-            
-            <form>
+            <h2>Level Calculator</h2>
+
+            <p>Enter in a level to determine how much XP you need to reach it.</p>
+            <p>
+            <form style="padding: 10px;">
                 <label for="x">XP required for level... </label>
                 <input type="text" id="x" name="x"><br><br>
                 <input type="button" value="Calculate" onclick="solveEquation()">
@@ -50,7 +50,7 @@
         </div>
 
         <div class="section">
-            <h2>Task Complexity Calculator</h1>
+            <h2>Task XP Calculator</h1>
             <script>
                 // This function will get the selected values from the dropdowns and find the matching number from the table
                 function calculate() {
@@ -82,9 +82,9 @@
                     document.getElementById("Tresult").innerHTML = "Your task was worth: " + number + " Experience points!";
                 }
             </script>
-                <p>Use the dropdowns to describe the difficulty and time-investment of a task. Then click "Calculate" to see how many experience points that task is worth.</p>
+                <p>Enter in a task's level of difficulty and the amount of time it takes to complete it to see how many experience points that task is worth.</p>
                 <br>
-                <form>
+                <form style="padding: 10px;">
                     <label for="difficulty">Difficulty Level:</label>
                     <select id="difficulty" name="difficulty">
                         <option value="Very easy">Very easy</option>
@@ -93,6 +93,8 @@
                         <option value="Hard">Hard</option>
                         <option value="Very Hard">Very Hard</option>
                     </select>
+                    <br>
+                    <br>
                     <label for="time">Time Duration:</label>
                     <select id="time" name="time">
                         <option value="1hr or less">1hr or less</option>
@@ -101,6 +103,8 @@
                         <option value="Weeks">Weeks</option>
                         <option value="3+ months">3+ months</option>
                     </select>
+                    <br>
+                    <br>
                     <button type="button" onclick="calculate()">Calculate</button>
                 </form>
                 <p id="Tresult"></p>
