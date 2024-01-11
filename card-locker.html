@@ -38,6 +38,12 @@
                 This number will change each day - so it's important to check in often to see what your odds are looking like.</p>
             <p>As you get new cards, save your collection to a folder somewhere you won't lose it and print them off as needed. But remember - you only have as many copies of a
                 card as you've unlocked! If you've only unlocked a card once, you'll only be allowed to use one copy of it in your deck.</p>
+
+            <!--For Testing Purposes -->
+            <br>
+            <p>Version 3.2. Current date is:</p>
+            <p id="testing"></p>
+
         </div>
 
 
@@ -48,169 +54,170 @@
 
             <!-- Import the js-sha256 library from a CDN -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
-
-            <!--For Testing Purposes -->
-            <p>Version 3.2. Current date is:</p>
-            <p id="testing"></p>
-            <br>
-            <p style="font-size: 25;">Today's Threshold is:</p>
+            
             <!-- Create a paragraph to display the output number -->
-            <h2 id="output-number" style="font-size:50px; text-align:center;"></h2>
+            <div style="display:flex;">
+                <div style="background-color:rgb(112, 128, 114);width:25%;padding:20px;border-radius:20px;">
+                    <p style="font-size: 25;">Today's Threshold is:</p>
+                    <h2 id="output-number" style="font-size:50px; text-align:center;"></h2>
+                </div>
+                
 
-            <!-- Write some JavaScript code to get the current date and the hash calculation -->
-            <script>
-                // Declare a global variable
-                var globalScaledNumber;
-                // Get the current date using the new Date() constructor
-                const today = new Date();
-                // Convert the date into a string in the format of yyyy-mm-dd
-                const date = today.toISOString().slice(0, 10);
-                // Calculate the SHA-256 hash of the date
-                const hash = sha256(date);
-                // Convert the last two hexadecimal digits of the hash to a decimal number
-                const number = parseInt(hash.slice(-2), 16);
-                // Scale the number to the range of 1 to 20
-                const scaledNumber = (number % 20) + 1;
-                // Get the output paragraph element by its id
-                const output = document.getElementById("output-number");
+                <!-- Write some JavaScript code to get the current date and the hash calculation -->
+                <script>
+                    // Declare a global variable
+                    var globalScaledNumber;
+                    // Get the current date using the new Date() constructor
+                    const today = new Date();
+                    // Convert the date into a string in the format of yyyy-mm-dd
+                    const date = today.toISOString().slice(0, 10);
+                    // Calculate the SHA-256 hash of the date
+                    const hash = sha256(date);
+                    // Convert the last two hexadecimal digits of the hash to a decimal number
+                    const number = parseInt(hash.slice(-2), 16);
+                    // Scale the number to the range of 1 to 20
+                    const scaledNumber = (number % 20) + 1;
+                    // Get the output paragraph element by its id
+                    const output = document.getElementById("output-number");
 
-                // Display the output number in the paragraph
-                output.textContent = scaledNumber;
-                // Assign the value of scaledNumber to the global variable
-                globalScaledNumber = scaledNumber;
-                //For testing purposes
-                const testingx = document.getElementById("testing");
-                testingx.textContent = date
-            </script>
+                    // Display the output number in the paragraph
+                    output.textContent = scaledNumber;
+                    // Assign the value of scaledNumber to the global variable
+                    globalScaledNumber = scaledNumber;
+                    //For testing purposes
+                    const testingx = document.getElementById("testing");
+                    testingx.textContent = date
+                </script>
 
-        </div>
+                <div style="padding:20px;">
 
-        <div class="section">
+                    <h2>Momentum:</h2>
 
-            <h2>Momentum:</h2>
+                    <!-- ----------- -->
+                    <!-- SLIDER CODE -->
+                    <!-- ----------- -->
+                    <div class="slidecontainer"
+                        style="background:rgb(112, 128, 114);width:fit-content;padding:20px;border-radius:20px;">
+                        <!-- Slider -->
+                        <input type="range" id="slider" min="-10" max="10" value="0">
+                        <!-- Output -->
+                        <output id="sliderValue" for="slider">0</output>
+                    </div>
 
-            <!-- ----------- -->
-            <!-- SLIDER CODE -->
-            <!-- ----------- -->
-            <div class="slidecontainer"
-                style="background:rgb(112, 128, 114);width:fit-content;padding:20px;border-radius:20px;">
-                <!-- Slider -->
-                <input type="range" id="slider" min="-10" max="10" value="0">
-                <!-- Output -->
-                <output id="sliderValue" for="slider">0</output>
-            </div>
-
-            <script>
-                // JavaScript
-                // Get the slider and output elements
-                var slider = document.getElementById("slider");
-                var SLoutput = document.getElementById("sliderValue");
-                // Update the output value when the slider changes
-                slider.oninput = function () {
-                    SLoutput.value = this.value;
-                }
-            </script>
-
-
-            <!-- ----------- -->
-            <!-- Random Link -->
-            <!-- ----------- -->
-            
-            <script>
-                function getRandomImage() {
-                    // Open a new tab immediately
-                    var newTab = window.open();
-                    // Use the $.getJSON method to get the data from the JSON file
-                    $.getJSON("Resources/CardList.json", function(data) {
-                        // Get the length of the images array
-                        var length = data.length;
-                        // Generate a random number between 0 and length - 1
-                        var randomNumber = Math.floor(Math.random() * length);
-                        // Get the random image from the array
-                        var randomImage = data[randomNumber];
-                        // Create the image url
-                        var imageUrl = "Cards/" + randomImage;
-                        // Print the image url to the console
-                        console.log(imageUrl);
-                        // Change the URL of the new tab
-                        newTab.location = imageUrl;
-                    });
-                }
-            </script>
-
-            <!-- ----------- -->
-            <!-- Dice Roller -->
-            <!-- ----------- -->
-            <br>
-            <button id="buttonGen" onclick="generateNumber()">Roll</button>
-            <h3 id="numberGen" style="padding-left:20px;"></h3>
-            <p id="SuccessFailiure"></p>
-            <br>
-            <p id="ComeBack"></p>
-            
-
-            <script>
-                // JavaScript
-                // Get the number and button elements
-                var numberGen = document.getElementById("numberGen");
-                var buttonGen = document.getElementById("buttonGen");
-                var SuccessFailiure = document.getElementById("SuccessFailiure");
-                var ComeBack = document.getElementById("ComeBack");
-
-                // Define a variable to store the interval ID
-                var interval;
-
-                // Define a function to generate a random number between 1 and 20
-                function randomInt() {
-                    return Math.floor(Math.random() * 20) + 1;
-                }  
-
-                // Define a function to generate and display the random numbers
-                function generateNumber() {
-                    // Change the button text to "Stop"
-                    buttonGen.textContent = "Good luck!";
-                    // Make the button unclickable
-                    buttonGen.disabled = true;
-                    // Set the interval to change the number every 50ms
-                    interval = setInterval(function () {
-                        // Generate and display a random number
-                        numberGen.textContent = randomInt();
-                    }, 50);
-                    // Set a timeout to stop the interval after 2 seconds
-                    setTimeout(function () {
-                        // Clear the interval 
-                        clearInterval(interval);
-                        // Define the final result as the sum of a random number and the slider value
-                        var finalResult = randomInt() + parseInt(slider.value);
-                        // Display it in the output
-                        numberGen.textContent = finalResult
-                        // Tell users to come back tomorrow
-                        ComeBack.textContent = "Come back tomorrow to try again!";
-                        // Compare the final number to the scaledNumber
-                        if (finalResult >= globalScaledNumber) {
-                            // Create a button element
-                            var RandCardbutton = document.createElement("button");
-                            // Set the inner text of the button
-                            RandCardbutton.innerText = "See what you found...";
-                            // Set the onclick attribute of the button
-                            RandCardbutton.onclick = function() {
-                                getRandomImage();
-                                this.disabled = true;
-                            }
-                            // Set the text output to "Success"
-                            SuccessFailiure.textContent = "You found a card! ";
-                            SuccessFailiure.appendChild(RandCardbutton)
-                        } else {
-                            // Set the text output to "Failure"
-                            SuccessFailiure.textContent = "Failiure...";
+                    <script>
+                        // JavaScript
+                        // Get the slider and output elements
+                        var slider = document.getElementById("slider");
+                        var SLoutput = document.getElementById("sliderValue");
+                        // Update the output value when the slider changes
+                        slider.oninput = function () {
+                            SLoutput.value = this.value;
                         }
-                    }, 2000);
-                } 
-  
-            </script>
-             
-             
+                    </script>
 
+                </div>
+
+                <div style="padding:20px;background-color:rgb(112, 128, 114); min-width:300px;border-radius:20px;">
+
+                    <!-- ----------- -->
+                    <!-- Random Link -->
+                    <!-- ----------- -->
+                    
+                    <script>
+                        function getRandomImage() {
+                            // Open a new tab immediately
+                            var newTab = window.open();
+                            // Use the $.getJSON method to get the data from the JSON file
+                            $.getJSON("Resources/CardList.json", function(data) {
+                                // Get the length of the images array
+                                var length = data.length;
+                                // Generate a random number between 0 and length - 1
+                                var randomNumber = Math.floor(Math.random() * length);
+                                // Get the random image from the array
+                                var randomImage = data[randomNumber];
+                                // Create the image url
+                                var imageUrl = "Cards/" + randomImage;
+                                // Print the image url to the console
+                                console.log(imageUrl);
+                                // Change the URL of the new tab
+                                newTab.location = imageUrl;
+                            });
+                        }
+                    </script>
+
+                    <!-- ----------- -->
+                    <!-- Dice Roller -->
+                    <!-- ----------- -->
+                    <br>
+                    <button id="buttonGen" onclick="generateNumber()">Roll</button>
+                    <h3 id="numberGen" style="padding-left:20px;"></h3>
+                    <p id="SuccessFailiure"></p>
+                    <br>
+                    <p id="ComeBack"></p>
+                    
+
+                    <script>
+                        // JavaScript
+                        // Get the number and button elements
+                        var numberGen = document.getElementById("numberGen");
+                        var buttonGen = document.getElementById("buttonGen");
+                        var SuccessFailiure = document.getElementById("SuccessFailiure");
+                        var ComeBack = document.getElementById("ComeBack");
+
+                        // Define a variable to store the interval ID
+                        var interval;
+
+                        // Define a function to generate a random number between 1 and 20
+                        function randomInt() {
+                            return Math.floor(Math.random() * 20) + 1;
+                        }  
+
+                        // Define a function to generate and display the random numbers
+                        function generateNumber() {
+                            // Change the button text to "Stop"
+                            buttonGen.textContent = "Good luck!";
+                            // Make the button unclickable
+                            buttonGen.disabled = true;
+                            // Set the interval to change the number every 50ms
+                            interval = setInterval(function () {
+                                // Generate and display a random number
+                                numberGen.textContent = randomInt();
+                            }, 50);
+                            // Set a timeout to stop the interval after 2 seconds
+                            setTimeout(function () {
+                                // Clear the interval 
+                                clearInterval(interval);
+                                // Define the final result as the sum of a random number and the slider value
+                                var finalResult = randomInt() + parseInt(slider.value);
+                                // Display it in the output
+                                numberGen.textContent = finalResult
+                                // Tell users to come back tomorrow
+                                ComeBack.textContent = "Come back tomorrow to try again!";
+                                // Compare the final number to the scaledNumber
+                                if (finalResult >= globalScaledNumber) {
+                                    // Create a button element
+                                    var RandCardbutton = document.createElement("button");
+                                    // Set the inner text of the button
+                                    RandCardbutton.innerText = "See what you found...";
+                                    // Set the onclick attribute of the button
+                                    RandCardbutton.onclick = function() {
+                                        getRandomImage();
+                                        this.disabled = true;
+                                    }
+                                    // Set the text output to "Success"
+                                    SuccessFailiure.textContent = "You found a card! ";
+                                    SuccessFailiure.appendChild(RandCardbutton)
+                                } else {
+                                    // Set the text output to "Failure"
+                                    SuccessFailiure.textContent = "Failiure...";
+                                }
+                            }, 2000);
+                        } 
+        
+                    </script>
+                </div>
+             
+            </div>
  
         </div>
  
