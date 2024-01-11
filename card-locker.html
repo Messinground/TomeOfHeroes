@@ -145,6 +145,9 @@
             <button id="buttonGen" onclick="generateNumber()">Roll</button>
             <h3 id="numberGen" style="padding-left:20px;"></h3>
             <p id="SuccessFailiure"></p>
+            <br>
+            <p id="ComeBack"></p>
+            
 
             <script>
                 // JavaScript
@@ -152,6 +155,7 @@
                 var numberGen = document.getElementById("numberGen");
                 var buttonGen = document.getElementById("buttonGen");
                 var SuccessFailiure = document.getElementById("SuccessFailiure");
+                var ComeBack = document.getElementById("ComeBack");
 
                 // Define a variable to store the interval ID
                 var interval;
@@ -159,7 +163,7 @@
                 // Define a function to generate a random number between 1 and 20
                 function randomInt() {
                     return Math.floor(Math.random() * 20) + 1;
-                }
+                }  
 
                 // Define a function to generate and display the random numbers
                 function generateNumber() {
@@ -180,6 +184,8 @@
                         var finalResult = randomInt() + parseInt(slider.value);
                         // Display it in the output
                         numberGen.textContent = finalResult
+                        // Tell users to come back tomorrow
+                        ComeBack.textContent = "Come back tomorrow to try again!";
                         // Compare the final number to the scaledNumber
                         if (finalResult >= globalScaledNumber) {
                             // Create a button element
@@ -196,15 +202,19 @@
                             SuccessFailiure.appendChild(RandCardbutton)
                         } else {
                             // Set the text output to "Failure"
-                            SuccessFailiure.textContent = "Try again tomorrow!";
+                            SuccessFailiure.textContent = "Failiure...";
                         }
                     }, 2000);
-                }
+                } 
   
             </script>
+             
+             
 
+ 
         </div>
  
+
     </div>
 
 </body>
