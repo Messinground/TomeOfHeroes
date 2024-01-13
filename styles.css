@@ -8,7 +8,7 @@
 :root {
     --bg-light: linear-gradient(to bottom, #9ca9b3, rgb(143, 180, 162));
     --text-color-light: #3E4001;
-    --link-color-light: darkblue;
+    --link-color-light: dodgerblue;
     --link-hover-light: darkblue;
     --Section-Text-L: #000;
 
@@ -30,7 +30,6 @@
     body {
         background: var(--bg-dark);
         color: var(--text-color-dark);
-        height: 100%;
     }
     a,
     a:link {
@@ -51,7 +50,6 @@
     body {
         background: var(--bg-light);
         color: var(--text-color-light);
-        height: 100%;
     }
     a,
     a:link {
@@ -65,7 +63,6 @@
         background: var(--Section-Background-L)
     }
 }
-/*/
 
 /* Add some style to the page */
 
@@ -77,6 +74,7 @@ ul {
 
 body {
     margin-top: 75px;
+    height: 100%;
     /* This way the title doesn't overlap with the toolbar*/
 }
 
