@@ -7,14 +7,14 @@
 
 :root {
     --bg-light: linear-gradient(to bottom, #9ca9b3, rgb(143, 180, 162));
-    --bg-light: -moz-linear-gradient(bottom, #9ca9b3, rgb(143, 180, 162));
+    --bg-light: -moz-linear-gradient(to bottom, #9ca9b3, rgb(143, 180, 162));
     --text-color-light: #3E4001;
     --link-color-light: darkblue;
     --link-hover-light: darkblue;
     --Section-Text-L: #000;
 
     --bg-dark: linear-gradient(to bottom, #72808C, #221);
-    --bg-dark: -moz-linear-gradient(bottom, #72808C, #221);
+    --bg-dark: -moz-linear-gradient(to bottom, #72808C, #221);
     --text-color-dark: white;
     --link-color-dark: #FFF;
     --link-hover-dark: black;
