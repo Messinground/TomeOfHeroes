@@ -30,9 +30,15 @@
         <h1>Card Locker</h1>
         <div style="padding-left: 20px;padding-right: 20px;">
             <p>This is where your progress pays up!</p>
-            <p>Adjust the slider below according to your progress, then roll the dice to see if you discover something new!</p>
-                <p>This number will change each day - so it's important to check in often to see what your odds are looking like.</p>
-            <p>Don't forget to save your collection to a folder somewhere safe.</p>
+            <p>Each day that you complete all the tasks that were due, you gain +1 Momentum. If you leave any of them
+                incomplete, you instead lose 1 Momentum. </p>
+            <p>Momentum affects your odds of discovering a <b>Card Scrap</b> each day. Start with 0 and adjust the slider below according to your progress. You can have anywhere between -10 and
+                +10 momentum at a time. </p>
+            <p>
+               Similarly, your player level will affect your odds of discovering a card scrap. Enter your level to apply any bonuses.
+            </p>
+            <p>Roll the dice and see whether you can surpass the threshold to discover something new!
+                This number will change each day - so it's important to check in often to see what your odds are looking like.</p>
 
             <!--For Testing Purposes -->
             <br>
@@ -110,6 +116,69 @@
                         }
                     </script>
 
+                    <h2>Player Level:</h2>
+
+                    <!-- -------------  -->
+                    <!-- SLIDER CODE #2 -->
+                    <!-- -------------  -->
+                    <div class="slidecontainer"
+                        style="background:rgb(112, 128, 114);width:fit-content;padding:20px;border-radius:20px;">
+                        <!-- Slider -->
+                        <input type="range" id="slider2" min="1" max="120" value="1">
+                        <!-- Output --> 
+                        <output id="sliderValue2" for="slider2">1</output>
+                    </div>
+  
+                    <script>
+                        // JavaScript
+                        // Get the slider and output elements
+                        var slider2 = document.getElementById("slider2");
+                        var SLoutput2 = document.getElementById("sliderValue2");
+                        var LevelBonus = 0;
+                        // Update the output value when the slider changes
+                        slider2.oninput = function () {
+                            SLoutput2.value = this.value;
+                            // Interpret the modifer from Slider2
+                            switch (true) {
+                                case (slider2.value < 5):
+                                    LevelBonus = 0;
+                                    break;
+                                case (slider2.value >= 5 && slider2.value < 25):
+                                    LevelBonus = 1;
+                                    break;
+                                case (slider2.value >= 25 && slider2.value < 45):
+                                    LevelBonus = 2;
+                                    break;
+                                case (slider2.value >= 45 && slider2.value < 60):
+                                    LevelBonus = 3;
+                                    break;
+                                case (slider2.value >= 60 && slider2.value < 75):
+                                    LevelBonus = 4;
+                                    break;
+                                case (slider2.value >= 75 && slider2.value < 90):
+                                    LevelBonus = 5;
+                                    break;
+                                case (slider2.value >= 90 && slider2.value < 100):
+                                    LevelBonus = 6;
+                                    break;
+                                case (slider2.value >= 100 && slider2.value < 110):
+                                    LevelBonus = 7;
+                                    break;
+                                case (slider2.value >= 110 && slider2.value < 115):
+                                    LevelBonus = 8;
+                                    break;
+                                case (slider2.value >= 115 && slider2.value < 120):
+                                    LevelBonus = 9;
+                                    break;
+                                case (slider2.value == 120):
+                                    LevelBonus = 10;
+                                    break;
+                                default:
+                                    LevelBonus = "Invalid input";
+                            }
+                        }
+                    </script>
+
                 </div>
 
                 <div style="padding:20px;background-color:rgb(112, 128, 114); min-width:300px;border-radius:20px;">
@@ -182,25 +251,26 @@
                             setTimeout(function () {
                                 // Clear the interval 
                                 clearInterval(interval);
-                                // Define the final result as the sum of a random number and the slider value
-                                var finalResult = randomInt() + parseInt(slider.value);
+                                // Define the final result as the sum of a random number and the value of the sliders
+                                var finalResult = randomInt() + parseInt(slider.value) +parseInt(LevelBonus)
                                 // Display it in the output
                                 numberGen.textContent = finalResult
                                 // Tell users to come back tomorrow
-                                ComeBack.textContent = "Come back tomorrow to try again!";
-                                // Compare the final number to the scaledNumber
+                                
+                                ComeBack.textContent = "Come back tomorrow to try again!";  
+                                // Compare the final number to the scaledNumber  
                                 if (finalResult >= globalScaledNumber) {
-                                    // Create a button element
+                                    // Create a button element  
                                     var RandCardbutton = document.createElement("button");
-                                    // Set the inner text of the button
-                                    RandCardbutton.innerText = "See what you found...";
+                                    // Set the inner text of the button 
+                                    RandCardbutton.innerText = "Or print one off yourself...";
                                     // Set the onclick attribute of the button
                                     RandCardbutton.onclick = function() {
                                         getRandomImage();
-                                        this.disabled = true;
+                                        this.disabled = true; 
                                     }
                                     // Set the text output to "Success"
-                                    SuccessFailiure.textContent = "You found a card! ";
+                                    SuccessFailiure.textContent = "You found a Card Scrap! ";
                                     SuccessFailiure.appendChild(RandCardbutton)
                                 } else {
                                     // Set the text output to "Failure"
